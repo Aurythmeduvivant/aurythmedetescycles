@@ -1,7 +1,7 @@
 {
-  "name": "Au Rythme du Vivant — Tracker de cycles",
-  "short_name": "Au Rythme",
-  "start_url": "/tracker/",
+  "name": "Au Rythme de tes Cycles",
+  "short_name": "Mes Cycles",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0D2440",
   "theme_color": "#0D2440",
@@ -16,5 +16,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "scope": "./"
 }

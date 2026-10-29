@@ -1,0 +1,889 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Au Rythme du Vivant//Lune et saisons//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:🌙 Lune & saisons · Au Rythme du Vivant
+X-WR-TIMEZONE:Europe/Paris
+X-WR-CALDESC:Phases de lune et saisons\, avec un conseil de Poerava.
+REFRESH-INTERVAL;VALUE=DURATION:P1W
+X-PUBLISHED-TTL:P1W
+BEGIN:VEVENT
+UID:lune-20261003T132533Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261003T132533Z
+DTEND:20261003T135533Z
+SUMMARY:🌗 Dernier quartier en Cancer
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nSensibilité à fleur de peau : acc
+ orde-toi un moment cocon\, une boisson chaude\, du calme.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261010T155036Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261010T155036Z
+DTEND:20261010T162036Z
+SUMMARY:🌑 Nouvelle lune en Balance
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nBesoin d'harmonie et de lien : pren
+ ds des nouvelles d'une personne qui compte pour toi.\n\nNote ta journée d
+ ans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— P
+ oerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261018T161319Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261018T161319Z
+DTEND:20261018T164319Z
+SUMMARY:🌓 Premier quartier en Capricorne
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nÉnergie qui structure : pose les trois priori
+ tés de ta semaine\, pas une de plus.\n\nNote ta journée dans l'app : htt
+ ps://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Ry
+ thme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261026T041215Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261026T041215Z
+DTEND:20261026T044215Z
+SUMMARY:🌕 Pleine lune en Taureau
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Besoin de concret et de douceur : savoure un repas lentement\, sans écran
+ .\n\nNote ta journée dans l'app : https://aurythmeduvivant.github.io/aury
+ thmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261101T202858Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261101T202858Z
+DTEND:20261101T205858Z
+SUMMARY:🌗 Dernier quartier en Lion
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nEnvie de rayonner : fais une chose 
+ qui te met en joie\, juste pour toi.\n\nNote ta journée dans l'app : http
+ s://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Ryt
+ hme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261109T070242Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261109T070242Z
+DTEND:20261109T073242Z
+SUMMARY:🌑 Nouvelle lune en Scorpion
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nÉmotions profondes : prends cinq m
+ inutes pour écrire ce que tu ressens vraiment\, sans te censurer.\n\nNote
+  ta journée dans l'app : https://aurythmeduvivant.github.io/aurythmedetes
+ cycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261117T114827Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261117T114827Z
+DTEND:20261117T121827Z
+SUMMARY:🌓 Premier quartier en Verseau
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nEnvie de neuf : change une petite habitude auj
+ ourd'hui\, un trajet\, une recette.\n\nNote ta journée dans l'app : https
+ ://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Ryth
+ me du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261124T145404Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261124T145404Z
+DTEND:20261124T152404Z
+SUMMARY:🌕 Pleine lune en Gémeaux
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ L'esprit papillonne : note tes idées sur papier pour libérer ta tête\, 
+ puis choisis-en une seule.\n\nNote ta journée dans l'app : https://auryth
+ meduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Viv
+ ant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261201T060914Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261201T060914Z
+DTEND:20261201T063914Z
+SUMMARY:🌗 Dernier quartier en Vierge
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nGoût du soin et de l'ordre : range
+  un petit espace\, ton bureau ou ton sac\, l'esprit suit.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261209T005231Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261209T005231Z
+DTEND:20261209T012231Z
+SUMMARY:🌑 Nouvelle lune en Sagittaire
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nSoif d'espace : sors marcher dehors
+ \, en laissant ton regard porter loin.\n\nNote ta journée dans l'app : ht
+ tps://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au R
+ ythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261217T054314Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261217T054314Z
+DTEND:20261217T061314Z
+SUMMARY:🌓 Premier quartier en Poissons
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nIntuition et rêverie : offre-toi quelques min
+ utes de respiration lente avant de dormir.\n\nNote ta journée dans l'app 
+ : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · 
+ Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261224T012845Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261224T012845Z
+DTEND:20261224T015845Z
+SUMMARY:🌕 Pleine lune en Cancer
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Sensibilité à fleur de peau : accorde-toi un moment cocon\, une boisson 
+ chaude\, du calme.\n\nNote ta journée dans l'app : https://aurythmeduviva
+ nt.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20261230T190007Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20261230T190007Z
+DTEND:20261230T193007Z
+SUMMARY:🌗 Dernier quartier en Balance
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nBesoin d'harmonie et de lien : pren
+ ds des nouvelles d'une personne qui compte pour toi.\n\nNote ta journée d
+ ans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— P
+ oerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270107T202505Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270107T202505Z
+DTEND:20270107T205505Z
+SUMMARY:🌑 Nouvelle lune en Capricorne
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nÉnergie qui structure : pose les t
+ rois priorités de ta semaine\, pas une de plus.\n\nNote ta journée dans 
+ l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poera
+ va · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270115T203505Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270115T203505Z
+DTEND:20270115T210505Z
+SUMMARY:🌓 Premier quartier en Bélier
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nÉnergie vive et spontanée : bouge ton corps 
+ quelques minutes dès le matin pour canaliser cet élan.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270122T121750Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270122T121750Z
+DTEND:20270122T124750Z
+SUMMARY:🌕 Pleine lune en Lion
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Envie de rayonner : fais une chose qui te met en joie\, juste pour toi.\n\
+ nNote ta journée dans l'app : https://aurythmeduvivant.github.io/aurythme
+ detescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270129T105606Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270129T105606Z
+DTEND:20270129T112606Z
+SUMMARY:🌗 Dernier quartier en Scorpion
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nÉmotions profondes : prends cinq m
+ inutes pour écrire ce que tu ressens vraiment\, sans te censurer.\n\nNote
+  ta journée dans l'app : https://aurythmeduvivant.github.io/aurythmedetes
+ cycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270206T155647Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270206T155647Z
+DTEND:20270206T162647Z
+SUMMARY:🌑 Nouvelle lune en Verseau
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nEnvie de neuf : change une petite h
+ abitude aujourd'hui\, un trajet\, une recette.\n\nNote ta journée dans l'
+ app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava
+  · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270214T075902Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270214T075902Z
+DTEND:20270214T082902Z
+SUMMARY:🌓 Premier quartier en Taureau
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nBesoin de concret et de douceur : savoure un r
+ epas lentement\, sans écran.\n\nNote ta journée dans l'app : https://aur
+ ythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du 
+ Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270220T232407Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270220T232407Z
+DTEND:20270220T235407Z
+SUMMARY:🌕 Pleine lune en Vierge
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Goût du soin et de l'ordre : range un petit espace\, ton bureau ou ton sa
+ c\, l'esprit suit.\n\nNote ta journée dans l'app : https://aurythmeduviva
+ nt.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270228T051707Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270228T051707Z
+DTEND:20270228T054707Z
+SUMMARY:🌗 Dernier quartier en Sagittaire
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nSoif d'espace : sors marcher dehors
+ \, en laissant ton regard porter loin.\n\nNote ta journée dans l'app : ht
+ tps://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au R
+ ythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270308T093007Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270308T093007Z
+DTEND:20270308T100007Z
+SUMMARY:🌑 Nouvelle lune en Poissons
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nIntuition et rêverie : offre-toi q
+ uelques minutes de respiration lente avant de dormir.\n\nNote ta journée 
+ dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— 
+ Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270315T162543Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270315T162543Z
+DTEND:20270315T165543Z
+SUMMARY:🌓 Premier quartier en Gémeaux
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nL'esprit papillonne : note tes idées sur papi
+ er pour libérer ta tête\, puis choisis-en une seule.\n\nNote ta journée
+  dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n—
+  Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270322T104419Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270322T104419Z
+DTEND:20270322T111419Z
+SUMMARY:🌕 Pleine lune en Balance
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Besoin d'harmonie et de lien : prends des nouvelles d'une personne qui com
+ pte pour toi.\n\nNote ta journée dans l'app : https://aurythmeduvivant.gi
+ thub.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270330T005436Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270330T005436Z
+DTEND:20270330T012436Z
+SUMMARY:🌗 Dernier quartier en Capricorne
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nÉnergie qui structure : pose les t
+ rois priorités de ta semaine\, pas une de plus.\n\nNote ta journée dans 
+ l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poera
+ va · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270406T235145Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270406T235145Z
+DTEND:20270407T002145Z
+SUMMARY:🌑 Nouvelle lune en Bélier
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nÉnergie vive et spontanée : bouge
+  ton corps quelques minutes dès le matin pour canaliser cet élan.\n\nNot
+ e ta journée dans l'app : https://aurythmeduvivant.github.io/aurythmedete
+ scycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270413T225712Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270413T225712Z
+DTEND:20270413T232712Z
+SUMMARY:🌓 Premier quartier en Cancer
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nSensibilité à fleur de peau : accorde-toi un
+  moment cocon\, une boisson chaude\, du calme.\n\nNote ta journée dans l'
+ app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava
+  · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270420T222744Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270420T222744Z
+DTEND:20270420T225744Z
+SUMMARY:🌕 Pleine lune en Scorpion
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Émotions profondes : prends cinq minutes pour écrire ce que tu ressens v
+ raiment\, sans te censurer.\n\nNote ta journée dans l'app : https://auryt
+ hmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vi
+ vant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270428T201833Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270428T201833Z
+DTEND:20270428T204833Z
+SUMMARY:🌗 Dernier quartier en Verseau
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nEnvie de neuf : change une petite h
+ abitude aujourd'hui\, un trajet\, une recette.\n\nNote ta journée dans l'
+ app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava
+  · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270506T105910Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270506T105910Z
+DTEND:20270506T112910Z
+SUMMARY:🌑 Nouvelle lune en Taureau
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nBesoin de concret et de douceur : s
+ avoure un repas lentement\, sans écran.\n\nNote ta journée dans l'app : 
+ https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au
+  Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270513T044428Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270513T044428Z
+DTEND:20270513T051428Z
+SUMMARY:🌓 Premier quartier en Lion
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nEnvie de rayonner : fais une chose qui te met 
+ en joie\, juste pour toi.\n\nNote ta journée dans l'app : https://aurythm
+ eduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Viva
+ nt
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270520T105939Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270520T105939Z
+DTEND:20270520T112939Z
+SUMMARY:🌕 Pleine lune en Scorpion
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Émotions profondes : prends cinq minutes pour écrire ce que tu ressens v
+ raiment\, sans te censurer.\n\nNote ta journée dans l'app : https://auryt
+ hmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vi
+ vant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270528T135835Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270528T135835Z
+DTEND:20270528T142835Z
+SUMMARY:🌗 Dernier quartier en Poissons
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nIntuition et rêverie : offre-toi q
+ uelques minutes de respiration lente avant de dormir.\n\nNote ta journée 
+ dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— 
+ Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270604T194051Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270604T194051Z
+DTEND:20270604T201051Z
+SUMMARY:🌑 Nouvelle lune en Gémeaux
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nL'esprit papillonne : note tes idé
+ es sur papier pour libérer ta tête\, puis choisis-en une seule.\n\nNote 
+ ta journée dans l'app : https://aurythmeduvivant.github.io/aurythmedetesc
+ ycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270611T105642Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270611T105642Z
+DTEND:20270611T112642Z
+SUMMARY:🌓 Premier quartier en Vierge
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nGoût du soin et de l'ordre : range un petit e
+ space\, ton bureau ou ton sac\, l'esprit suit.\n\nNote ta journée dans l'
+ app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava
+  · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270619T004501Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270619T004501Z
+DTEND:20270619T011501Z
+SUMMARY:🌕 Pleine lune en Sagittaire
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Soif d'espace : sors marcher dehors\, en laissant ton regard porter loin.\
+ n\nNote ta journée dans l'app : https://aurythmeduvivant.github.io/auryth
+ medetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270627T045456Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270627T045456Z
+DTEND:20270627T052456Z
+SUMMARY:🌗 Dernier quartier en Bélier
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nÉnergie vive et spontanée : bouge
+  ton corps quelques minutes dès le matin pour canaliser cet élan.\n\nNot
+ e ta journée dans l'app : https://aurythmeduvivant.github.io/aurythmedete
+ scycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270704T030232Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270704T030232Z
+DTEND:20270704T033232Z
+SUMMARY:🌑 Nouvelle lune en Cancer
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nSensibilité à fleur de peau : acc
+ orde-toi un moment cocon\, une boisson chaude\, du calme.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270710T183936Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270710T183936Z
+DTEND:20270710T190936Z
+SUMMARY:🌓 Premier quartier en Balance
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nBesoin d'harmonie et de lien : prends des nouv
+ elles d'une personne qui compte pour toi.\n\nNote ta journée dans l'app :
+  https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · A
+ u Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270718T154536Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270718T154536Z
+DTEND:20270718T161536Z
+SUMMARY:🌕 Pleine lune en Capricorne
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Énergie qui structure : pose les trois priorités de ta semaine\, pas une
+  de plus.\n\nNote ta journée dans l'app : https://aurythmeduvivant.github
+ .io/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270726T165528Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270726T165528Z
+DTEND:20270726T172528Z
+SUMMARY:🌗 Dernier quartier en Taureau
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nBesoin de concret et de douceur : s
+ avoure un repas lentement\, sans écran.\n\nNote ta journée dans l'app : 
+ https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au
+  Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270802T100542Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270802T100542Z
+DTEND:20270802T103542Z
+SUMMARY:🌑 Nouvelle lune en Lion
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nEnvie de rayonner : fais une chose 
+ qui te met en joie\, juste pour toi.\n\nNote ta journée dans l'app : http
+ s://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Ryt
+ hme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270809T045448Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270809T045448Z
+DTEND:20270809T052448Z
+SUMMARY:🌓 Premier quartier en Scorpion
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nÉmotions profondes : prends cinq minutes pour
+  écrire ce que tu ressens vraiment\, sans te censurer.\n\nNote ta journé
+ e dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270817T072919Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270817T072919Z
+DTEND:20270817T075919Z
+SUMMARY:🌕 Pleine lune en Verseau
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Envie de neuf : change une petite habitude aujourd'hui\, un trajet\, une r
+ ecette.\n\nNote ta journée dans l'app : https://aurythmeduvivant.github.i
+ o/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270825T022754Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270825T022754Z
+DTEND:20270825T025754Z
+SUMMARY:🌗 Dernier quartier en Gémeaux
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nL'esprit papillonne : note tes idé
+ es sur papier pour libérer ta tête\, puis choisis-en une seule.\n\nNote 
+ ta journée dans l'app : https://aurythmeduvivant.github.io/aurythmedetesc
+ ycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270831T174140Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270831T174140Z
+DTEND:20270831T181140Z
+SUMMARY:🌑 Nouvelle lune en Vierge
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nGoût du soin et de l'ordre : range
+  un petit espace\, ton bureau ou ton sac\, l'esprit suit.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270907T183157Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270907T183157Z
+DTEND:20270907T190157Z
+SUMMARY:🌓 Premier quartier en Sagittaire
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nSoif d'espace : sors marcher dehors\, en laiss
+ ant ton regard porter loin.\n\nNote ta journée dans l'app : https://auryt
+ hmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vi
+ vant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270915T230409Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270915T230409Z
+DTEND:20270915T233409Z
+SUMMARY:🌕 Pleine lune en Poissons
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Intuition et rêverie : offre-toi quelques minutes de respiration lente av
+ ant de dormir.\n\nNote ta journée dans l'app : https://aurythmeduvivant.g
+ ithub.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270923T102100Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270923T102100Z
+DTEND:20270923T105100Z
+SUMMARY:🌗 Dernier quartier en Cancer
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nSensibilité à fleur de peau : acc
+ orde-toi un moment cocon\, une boisson chaude\, du calme.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20270930T023634Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20270930T023634Z
+DTEND:20270930T030634Z
+SUMMARY:🌑 Nouvelle lune en Balance
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nBesoin d'harmonie et de lien : pren
+ ds des nouvelles d'une personne qui compte pour toi.\n\nNote ta journée d
+ ans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— P
+ oerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271007T114803Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271007T114803Z
+DTEND:20271007T121803Z
+SUMMARY:🌓 Premier quartier en Capricorne
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nÉnergie qui structure : pose les trois priori
+ tés de ta semaine\, pas une de plus.\n\nNote ta journée dans l'app : htt
+ ps://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Ry
+ thme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271015T134734Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271015T134734Z
+DTEND:20271015T141734Z
+SUMMARY:🌕 Pleine lune en Bélier
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Énergie vive et spontanée : bouge ton corps quelques minutes dès le mat
+ in pour canaliser cet élan.\n\nNote ta journée dans l'app : https://aury
+ thmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du V
+ ivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271022T172942Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271022T172942Z
+DTEND:20271022T175942Z
+SUMMARY:🌗 Dernier quartier en Cancer
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nSensibilité à fleur de peau : acc
+ orde-toi un moment cocon\, une boisson chaude\, du calme.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271029T133704Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271029T133704Z
+DTEND:20271029T140704Z
+SUMMARY:🌑 Nouvelle lune en Scorpion
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nÉmotions profondes : prends cinq m
+ inutes pour écrire ce que tu ressens vraiment\, sans te censurer.\n\nNote
+  ta journée dans l'app : https://aurythmeduvivant.github.io/aurythmedetes
+ cycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271106T080040Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271106T080040Z
+DTEND:20271106T083040Z
+SUMMARY:🌓 Premier quartier en Verseau
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nEnvie de neuf : change une petite habitude auj
+ ourd'hui\, un trajet\, une recette.\n\nNote ta journée dans l'app : https
+ ://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Ryth
+ me du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271114T032625Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271114T032625Z
+DTEND:20271114T035625Z
+SUMMARY:🌕 Pleine lune en Taureau
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ Besoin de concret et de douceur : savoure un repas lentement\, sans écran
+ .\n\nNote ta journée dans l'app : https://aurythmeduvivant.github.io/aury
+ thmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271121T004846Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271121T004846Z
+DTEND:20271121T011846Z
+SUMMARY:🌗 Dernier quartier en Lion
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nEnvie de rayonner : fais une chose 
+ qui te met en joie\, juste pour toi.\n\nNote ta journée dans l'app : http
+ s://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Ryt
+ hme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271128T032459Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271128T032459Z
+DTEND:20271128T035459Z
+SUMMARY:🌑 Nouvelle lune en Sagittaire
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nSoif d'espace : sors marcher dehors
+ \, en laissant ton regard porter loin.\n\nNote ta journée dans l'app : ht
+ tps://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au R
+ ythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271206T052247Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271206T052247Z
+DTEND:20271206T055247Z
+SUMMARY:🌓 Premier quartier en Poissons
+DESCRIPTION:L'énergie appelle l'action. Choisis une tâche que tu repousse
+ s et avance-la avant midi.\nIntuition et rêverie : offre-toi quelques min
+ utes de respiration lente avant de dormir.\n\nNote ta journée dans l'app 
+ : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · 
+ Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271213T160918Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271213T160918Z
+DTEND:20271213T163918Z
+SUMMARY:🌕 Pleine lune en Gémeaux
+DESCRIPTION:Lumière et intensité\, le sommeil peut être plus léger. Pos
+ e tes écrans une heure avant le coucher et note ce qui s'est éclairé.\n
+ L'esprit papillonne : note tes idées sur papier pour libérer ta tête\, 
+ puis choisis-en une seule.\n\nNote ta journée dans l'app : https://auryth
+ meduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Viv
+ ant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271220T091127Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271220T091127Z
+DTEND:20271220T094127Z
+SUMMARY:🌗 Dernier quartier en Vierge
+DESCRIPTION:Invitation au tri. Libère une chose aujourd'hui : un objet\, u
+ n engagement\, une pensée qui pèse.\nGoût du soin et de l'ordre : range
+  un petit espace\, ton bureau ou ton sac\, l'esprit suit.\n\nNote ta journ
+ ée dans l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n
+ — Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lune-20271227T201256Z@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART:20271227T201256Z
+DTEND:20271227T204256Z
+SUMMARY:🌑 Nouvelle lune en Capricorne
+DESCRIPTION:Temps de semence et de repos. Ce soir\, écris en une phrase ce
+  que tu veux voir grandir ce mois-ci.\nÉnergie qui structure : pose les t
+ rois priorités de ta semaine\, pas une de plus.\n\nNote ta journée dans 
+ l'app : https://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poera
+ va · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:saison-20261221@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20261222
+SUMMARY:❄️ Début de l'hiver
+DESCRIPTION:Rythme : Saison du repli : fais moins\, mais en conscience.\nSo
+ mmeil : Ton corps réclame plus de sommeil : accorde-toi des nuits longues
+ \, sans culpabilité.\nAlimentation : Privilégie les plats chauds et nour
+ rissants : mijotés\, légumineuses\, bouillons.\n\nhttps://aurythmeduviva
+ nt.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:saison-20270320@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270321
+SUMMARY:🌱 Début du printemps
+DESCRIPTION:Rythme : L'énergie remonte : commence un projet par un tout pe
+ tit pas.\nSommeil : La lumière revient tôt : ouvre tes volets dès le r
+ éveil pour caler ton horloge intérieure.\nAlimentation : Allège l'assie
+ tte : jeunes pousses\, légumes verts\, herbes fraîches.\n\nhttps://auryt
+ hmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vi
+ vant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:saison-20270621@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART;VALUE=DATE:20270621
+DTEND;VALUE=DATE:20270622
+SUMMARY:☀️ Début de l'été
+DESCRIPTION:Rythme : Profite de l'élan\, mais garde une vraie pause au cœ
+ ur de la journée.\nSommeil : Les soirées longues retardent l'endormissem
+ ent : obscurcis bien ta chambre.\nAlimentation : Mise sur le frais et l'hy
+ dratant : fruits\, crudités\, de l'eau tout au long de la journée.\n\nht
+ tps://aurythmeduvivant.github.io/aurythmedetescycles/\n— Poerava · Au R
+ ythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:saison-20270923@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART;VALUE=DATE:20270923
+DTEND;VALUE=DATE:20270924
+SUMMARY:🍂 Début de l'automne
+DESCRIPTION:Rythme : Ralentis progressivement : c'est une transition\, pas 
+ un frein.\nSommeil : La lumière baisse : avance un peu l'heure de ton cou
+ cher.\nAlimentation : Réintroduis le chaud et le réconfortant : soupes\,
+  légumes racines\, courges.\n\nhttps://aurythmeduvivant.github.io/aurythm
+ edetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:saison-20271222@aurythmeduvivant.github.io
+DTSTAMP:20261029T130915Z
+DTSTART;VALUE=DATE:20271222
+DTEND;VALUE=DATE:20271223
+SUMMARY:❄️ Début de l'hiver
+DESCRIPTION:Rythme : Saison du repli : fais moins\, mais en conscience.\nSo
+ mmeil : Ton corps réclame plus de sommeil : accorde-toi des nuits longues
+ \, sans culpabilité.\nAlimentation : Privilégie les plats chauds et nour
+ rissants : mijotés\, légumineuses\, bouillons.\n\nhttps://aurythmeduviva
+ nt.github.io/aurythmedetescycles/\n— Poerava · Au Rythme du Vivant
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

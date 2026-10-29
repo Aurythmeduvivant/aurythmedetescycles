@@ -9,9 +9,9 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="logo192.png">
 <link rel="icon" type="image/png" sizes="192x192" href="logo192.png">
-<title>Au Rythme du Vivant — Tracker de cycles</title>
+<title>Au Rythme de tes Cycles</title>
 <meta name="description" content="Suis ton énergie, tes cycles et tes rythmes naturels. Un outil doux et ancré signé Poerava — Au Rythme du Vivant.">
-<meta property="og:title" content="Au Rythme du Vivant — Tracker de cycles">
+<meta property="og:title" content="Au Rythme de tes Cycles">
 <meta property="og:description" content="Observe ton énergie, tes cycles lunaires, menstruels et circadiens. Gratuit, intime, hors connexion.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
@@ -95,6 +95,8 @@ html,body{height:100%;background:var(--cream);color:var(--text);font-family:'Lat
 .modal-moon-info{font-size:12px;color:var(--text-light);margin-bottom:12px;padding:8px 12px;background:var(--white);border-radius:8px;border:1px solid var(--border);}
 .conseil-block{background:var(--cream-dark);border-radius:10px;padding:10px 14px;margin-bottom:16px;border-left:3px solid var(--sage);}
 .conseil-title{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sage-dark);margin-bottom:6px;}
+.conseil-sub{font-size:12px;font-weight:700;color:var(--teal);margin:10px 0 4px;}
+.conseil-block .conseil-sub:first-child,.conseil-title+.conseil-sub{margin-top:0;}
 .conseil-item{font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:4px;}
 .conseil-item:last-child{margin-bottom:0;}
 .conseil-item b{color:var(--teal);font-weight:700;}
@@ -122,6 +124,14 @@ html,body{height:100%;background:var(--cream);color:var(--text);font-family:'Lat
 .cycle-btns{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;}
 .cycle-btn{border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:11px;cursor:pointer;background:var(--white);color:var(--text-mid);font-family:'Lato',sans-serif;transition:all 0.15s;text-align:center;}
 .cycle-btn.active{background:#E8D5F0;color:#5a2d7a;border-color:#c9a8e0;}
+.scale-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+.scale-btn{border:1px solid var(--border);border-radius:10px;padding:10px 0;font-size:15px;font-weight:700;cursor:pointer;background:var(--white);color:var(--text-mid);font-family:'Lato',sans-serif;}
+.scale-btn.active{background:var(--teal);color:var(--white);border-color:var(--teal);}
+.scale-legend{display:flex;justify-content:space-between;font-size:10px;color:var(--text-light);margin-top:4px;}
+.regles-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.day-cycle.regles{background:#D98BA8;}
+.day-cycle.prevues{background:repeating-linear-gradient(90deg,#E8B4C8 0 3px,transparent 3px 5px);}
+.regles-info{font-size:11px;color:#9a4a6a;text-align:center;margin-top:4px;}
 .modal-actions{display:flex;gap:8px;margin-top:18px;}
 .btn-save{flex:1;background:var(--teal);color:var(--white);border:none;border-radius:12px;padding:14px;font-size:14px;font-family:'Lato',sans-serif;font-weight:700;cursor:pointer;letter-spacing:0.5px;}
 .btn-cancel{background:none;border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:13px;cursor:pointer;color:var(--text-mid);font-family:'Lato',sans-serif;}
@@ -145,12 +155,8 @@ canvas{width:100%!important;}
 </div>
 <div class="app">
   <div class="header">
-    <div class="header-top" style="display:flex;align-items:center;justify-content:space-between;padding:8px 16px;">
+    <div class="header-top">
       <div class="brand-sub" style="margin:0;">☀️ Au Rythme du Vivant · 🌙 Poerava</div>
-      <div id="sync-status-badge" style="font-size:9px;padding:3px 8px;border-radius:12px;background:rgba(232,223,200,0.2);color:rgba(232,223,200,0.8);display:flex;align-items:center;gap:4px;">
-        <span id="sync-indicator">●</span>
-        <span id="sync-text">En ligne</span>
-      </div>
     </div>
   </div>
   <div class="tabs">
@@ -158,7 +164,7 @@ canvas{width:100%!important;}
     <button class="tab" data-tab="cal">Agenda</button>
     <button class="tab" data-tab="bilans">Bilans</button>
     <button class="tab" data-tab="conseils">Conseil du jour</button>
-    <button class="tab" data-tab="sync">⚙️ Sync</button>
+    <button class="tab" data-tab="sync">Sauvegarde</button>
   </div>
   <div class="content">
     <div id="tab-guide" class="guide">
@@ -224,6 +230,7 @@ canvas{width:100%!important;}
         <div class="month-label">
           <div class="month-name" id="month-name"></div>
           <div class="season-tag" id="season-tag"></div>
+          <div class="regles-info" id="regles-info"></div>
         </div>
         <button class="nav-btn" id="next-btn">&#8594;</button>
       </div>
@@ -247,13 +254,12 @@ canvas{width:100%!important;}
       <div class="chart-card"><div class="chart-title">Énergie</div><div class="chart-area"><canvas id="chart-energy"></canvas></div></div>
       <div class="chart-card"><div class="chart-title">Humeur</div><div class="chart-area"><canvas id="chart-mood"></canvas></div></div>
       <div class="chart-card"><div class="chart-title">Sommeil</div><div class="chart-area"><canvas id="chart-sleep"></canvas></div></div>
-      <div class="chart-card"><div class="chart-title">Moment phare</div><div class="chart-area"><canvas id="chart-phare"></canvas></div></div>
-      <div class="chart-card"><div class="chart-title">Cycle menstruel</div><div class="chart-area"><canvas id="chart-cycle"></canvas></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;font-size:9px;color:var(--text-light)"><span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:50%;background:#E8D5F0;display:inline-block"></span>Menstruation</span><span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:50%;background:#C0DD97;display:inline-block"></span>Folliculaire</span><span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:50%;background:#FAC775;display:inline-block"></span>Ovulation</span><span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:50%;background:#F5C4B3;display:inline-block"></span>Lutéale</span></div></div>
+      <div class="chart-card"><div class="chart-title">Jours de règles</div><div class="chart-area"><canvas id="chart-cycle"></canvas></div></div>
       <div class="chart-card"><div class="chart-title">Phase lunaire</div><div class="chart-area"><canvas id="chart-moon"></canvas></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;font-size:9px;color:var(--text-light)"><span>🌑 NL=1</span><span>🌓 PQ=2</span><span>🌕 PL=3</span><span>🌗 DQ=4</span></div></div>
     </div>
     <div id="tab-sync" style="display:none;padding:24px 16px 80px;">
       <div style="max-width:500px;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--teal);margin-bottom:20px;text-align:center;">Synchronisation & Backup</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--teal);margin-bottom:20px;text-align:center;">Sauvegarde de tes données</div>
 
         <div style="background:var(--white);border-radius:14px;border:1px solid var(--border);padding:16px;margin-bottom:14px;">
           <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:12px;">📥 Importer des données</div>
@@ -264,11 +270,11 @@ canvas{width:100%!important;}
         <div style="background:var(--white);border-radius:14px;border:1px solid var(--border);padding:16px;margin-bottom:14px;">
           <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:12px;">📤 Exporter mes données</div>
           <button id="export-btn" style="width:100%;background:var(--sage);color:var(--white);border:none;border-radius:8px;padding:10px;font-weight:700;cursor:pointer;">Télécharger le backup</button>
-          <div style="font-size:11px;color:var(--text-light);margin-top:6px;">Cela crée un fichier JSON avec toutes vos données</div>
+          <div style="font-size:11px;color:var(--text-light);margin-top:6px;">Un fichier avec toutes tes notes, à garder précieusement.</div>
         </div>
 
         <div style="background:var(--white);border-radius:14px;border:1px solid var(--border);padding:16px;margin-bottom:14px;">
-          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:12px;">🔄 État de la synchronisation</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:12px;">🔄 État de la sauvegarde</div>
           <div id="sync-status" style="font-size:12px;color:var(--text-mid);line-height:1.6;">
             <div>Dernière sauvegarde: <span id="last-sync" style="color:var(--teal);font-weight:700;">jamais</span></div>
             <div style="margin-top:4px;">Données: <span id="data-count" style="color:var(--teal);font-weight:700;">0</span> jours tracés</div>
@@ -277,7 +283,7 @@ canvas{width:100%!important;}
 
         <div style="background:var(--teal-light);border-radius:14px;border:1px solid var(--sage-light);padding:16px;margin-bottom:14px;">
           <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-dark);margin-bottom:8px;">💡 Conseil</div>
-          <div style="font-size:12px;color:var(--teal-dark);line-height:1.6;">Téléchargez régulièrement votre backup. Vous pourrez ensuite l'importer sur votre téléphone ou un autre appareil.</div>
+          <div style="font-size:12px;color:var(--teal-dark);line-height:1.6;">Tes notes restent uniquement sur ton téléphone. Télécharge ta sauvegarde de temps en temps : tu pourras la réimporter sur un autre appareil.</div>
         </div>
       </div>
     </div>
@@ -289,6 +295,14 @@ canvas{width:100%!important;}
           <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--sage-dark);" id="conseil-tab-date"></div>
         </div>
         <div class="conseil-block" id="conseil-tab-body" style="margin-bottom:14px;"></div>
+        <div style="background:var(--white);border-radius:16px;padding:18px;margin-bottom:14px;border:1px solid var(--sage-light);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage-dark);margin-bottom:8px;">📅 La Lune et les saisons dans ton agenda</div>
+          <div style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:12px;">Abonne-toi une seule fois : les nouvelles et pleines lunes, les quartiers et les changements de saison apparaissent dans ton agenda habituel, avec un petit conseil.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="webcal://aurythmeduvivant.github.io/aurythmedetescycles/lune-et-saisons.ics" style="display:inline-block;background:var(--teal);color:var(--white);text-decoration:none;font-size:12px;font-weight:700;padding:9px 16px;border-radius:20px;">iPhone / Mac</a>
+            <a href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Faurythmeduvivant.github.io%2Faurythmedetescycles%2Flune-et-saisons.ics" target="_blank" style="display:inline-block;background:var(--sage);color:var(--white);text-decoration:none;font-size:12px;font-weight:700;padding:9px 16px;border-radius:20px;">Google Agenda</a>
+          </div>
+        </div>
         <div style="background:var(--white);border-radius:16px;padding:18px;margin-bottom:14px;border:1px solid var(--sage-light);">
           <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage-dark);margin-bottom:8px;">🎙 Podcast Au Rythme du Vivant</div>
           <div style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:12px;">Des épisodes pour comprendre tes cycles, ton énergie et ton rythme naturel.</div>
@@ -310,25 +324,10 @@ canvas{width:100%!important;}
     <div class="modal-date" id="modal-date"></div>
     <div class="modal-moon-info" id="modal-moon-info"></div>
     <div class="conseil-block" id="modal-conseil"></div>
-    <div class="field-block"><div class="field-label">Sommeil</div><div class="btn-row" id="sleep-btns"></div></div>
-    <div class="field-block">
-      <div class="field-label">Énergie</div>
-      <div class="btn-row" id="energy-btns"></div>
-      <input class="word-input" id="energy-word" placeholder="Ton mot pour aujourd'hui..." maxlength="30">
-      <div class="word-suggest" id="energy-suggest"></div>
-    </div>
-    <div class="field-block">
-      <div class="field-label">Humeur</div>
-      <div class="btn-row" id="mood-btns"></div>
-      <input class="word-input" id="mood-word" placeholder="Ton mot pour aujourd'hui..." maxlength="30">
-      <div class="word-suggest" id="mood-suggest"></div>
-    </div>
-    <div class="field-block"><div class="field-label">Moment phare de la journée</div><div class="phare-row" id="phare-btns"></div></div>
-    <div class="field-block"><div class="field-label">Cycle menstruel</div><div class="cycle-btns" id="cycle-btns"></div></div>
-    <div class="field-block">
-      <div class="field-label">Journée exceptionnelle</div>
-      <div class="star-row" id="star-row"><span class="star-icon">☆</span><span class="star-text">Marquer cette journée comme exceptionnelle</span></div>
-    </div>
+    <div class="field-block"><div class="field-label">Sommeil</div><div class="scale-row" id="sleep-btns"></div><div class="scale-legend"><span>1 = très mauvais</span><span>5 = excellent</span></div></div>
+    <div class="field-block"><div class="field-label">Énergie</div><div class="scale-row" id="energy-btns"></div><div class="scale-legend"><span>1 = très basse</span><span>5 = pleine</span></div></div>
+    <div class="field-block"><div class="field-label">Humeur</div><div class="scale-row" id="mood-btns"></div><div class="scale-legend"><span>1 = très lourde</span><span>5 = lumineuse</span></div></div>
+    <div class="field-block"><div class="field-label">Règles aujourd'hui ?</div><div class="regles-row" id="regles-btns"></div></div>
     <div class="field-block"><div class="field-label">To Do du jour</div><textarea class="note-area" id="todo-area" placeholder="Ce que je veux accomplir aujourd'hui..." style="height:52px;"></textarea></div>
     <div class="field-block"><div class="field-label">Note libre</div><textarea class="note-area" id="note-area" placeholder="Ce que j'observe, ce que je ressens..."></textarea></div>
     <div class="modal-actions">
@@ -341,34 +340,62 @@ canvas{width:100%!important;}
 <script>
 const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const DAYS_SHORT=['Lu','Ma','Me','Je','Ve','Sa','Di'];
-const SEASONS={5:{n:'Été',e:'☀️'},6:{n:'Été',e:'☀️'},7:{n:'Été',e:'☀️'},8:{n:'Automne',e:'🍂'},9:{n:'Automne',e:'🍂'},10:{n:'Automne',e:'🍂'},11:{n:'Hiver',e:'❄️'}};
-const ENERGY_OPTS=['Très basse','Basse','Moyenne','Haute','Pleine'];
-const MOOD_OPTS=['Sereine','Joyeuse','Créative','Fatiguée','Irritable','Sensible','Apaisée'];
-const PHARE_OPTS=[{k:'matin',l:'Matin'},{k:'midi',l:'Midi'},{k:'aprem',l:'Après-midi'},{k:'soir',l:'Soir'}];
-const CYCLE_OPTS=['Menstruation','Folliculaire','Ovulation','Phase lutéale','Incertain'];
-const SLEEP_OPTS=['Difficile','Moyen','Bon','Profond'];
-const ENERGY_WORDS=['Rayonnante','Légère','Stable','Expansive','Créative','Ancrée','Fluide','Débordante','Concentrée','Tranquille','Douce','Vibrante','Vacillante','Lourde','Épuisée','Dispersée','Engourdie','Tendue','Fragile','En retrait','Abattue','Vidée','Bloquée','Sombre','Renfermée','Pessimiste','Découragée','Éteinte','Alourdie','Résistante'];
-const MOOD_WORDS=['Sereine','Joyeuse','Enthousiaste','Présente','Reconnaissante','Curieuse','Tendre','Apaisée','Lumineuse','Sauvage','Nostalgique','Mélancolique','Sensible','Irritable','Anxieuse','Débordée','Triste','Confuse','Distante','Vulnérable','Énervée','Furieuse','Renfermée','Pessimiste','Maussade','Morose','Découragée','Impuissante','Amère','Fermée'];
-const MOON_DATA={
-  '2026-06-08':'🌗','2026-06-15':'🌑','2026-06-21':'🌓','2026-06-30':'🌕',
-  '2026-07-07':'🌗','2026-07-14':'🌑','2026-07-21':'🌓','2026-07-29':'🌕',
-  '2026-08-06':'🌗','2026-08-12':'🌑','2026-08-20':'🌓','2026-08-28':'🌕',
-  '2026-09-04':'🌗','2026-09-11':'🌑','2026-09-18':'🌓','2026-09-26':'🌕',
-  '2026-10-03':'🌗','2026-10-10':'🌑','2026-10-18':'🌓','2026-10-26':'🌕',
-  '2026-11-01':'🌗','2026-11-09':'🌑','2026-11-17':'🌓','2026-11-24':'🌕',
-  '2026-12-01':'🌗','2026-12-09':'🌑','2026-12-17':'🌓','2026-12-24':'🌕','2026-12-30':'🌗'
+const SEASON_EMOJI={'Printemps':'🌱','Été':'☀️','Automne':'🍂','Hiver':'❄️'};
+// Débuts exacts des saisons (équinoxes et solstices, astronomy-engine)
+const SEASON_STARTS=[["Printemps", "2026-03-20T14:45:36.044Z"], ["\u00c9t\u00e9", "2026-06-21T08:25:00.316Z"], ["Automne", "2026-09-23T00:05:38.617Z"], ["Hiver", "2026-12-21T20:50:22.187Z"], ["Printemps", "2027-03-20T20:24:43.453Z"], ["\u00c9t\u00e9", "2027-06-21T14:10:33.792Z"], ["Automne", "2027-09-23T06:01:18.345Z"], ["Hiver", "2027-12-22T02:42:18.622Z"], ["Printemps", "2028-03-20T02:17:01.018Z"], ["\u00c9t\u00e9", "2028-06-20T20:01:42.742Z"], ["Automne", "2028-09-22T11:45:24.683Z"], ["Hiver", "2028-12-21T08:20:05.734Z"]].map(([n,t])=>[n,new Date(t)]);
+function seasonOf(y,m,d){
+  const t=new Date(y,m,d,12);let n=null;
+  for(const [sn,st] of SEASON_STARTS)if(st<=t)n=sn;
+  if(!n){const md=(m+1)*100+d;n=md<320?'Hiver':md<621?'Printemps':md<922?'Été':md<1221?'Automne':'Hiver';}
+  return {n,e:SEASON_EMOJI[n]};
+}
+// Lune jour par jour (phase sur 8 + signe), 1er juin 2026 → 31 déc. 2027, calculée avec astronomy-engine
+const LUNE_START=Date.UTC(2026,5,1);
+const LUNE_CODE='5i5j5j5j5k5k5l6l7a7a7a7b7b7c0c1d1d1e1e1f2g3g3g3h3h3h3i3i3j4j5j5k5k5l5l5l6a7a7b7b7c7c7d0d1e1e1f1f1g1g2g3h3h3i3i3i3j3j4k5k5k5l5l5a5a5b6b7c7c7d7d7e0e1e1f1f1g1g1h1h2h3i3i3j3j3k3k3k4l5l5a5a5b5b5b6c7c7d7d7e7e7f0f1g1g1h1h1h1i2i3j3j3j3k3k3l3l4a5a5a5b5b5c5c6d7d7e7e7f7f7g0g1g1h1h1i1i1i1j2j3k3k3k3l3l3a3a4b5b5c5c5d5d6e7e7f7f7f7g7g7h0h1i1i1i1j1j1k1k2k3l3l3a3a3b3b4c5c5d5d5d5e5e6f7f7g7g7h7h7h7i0i1j1j1j1k1k1l1l2l3a3a3b3b3c3c4d5d5e5e5f5f6g7g7h7h7h7i7i7j0j1j1k1k1l1l1l1a2a3b3b3c3c3d3d4e5e5f5f5f5g5g6h7h7i7i7i7j7j7k0k1k1l1l1a1a1b1b2b3c3c3d3d3e3e4f5f5g5g5h5h5i6i7i7j7j7j7k7k7l0l1a1a1a1b1b1c2c3d3d3e3e3f3f4g5g5g5h5h5i5i5j6j7j7k7k7l7l7l7a0a1b1b1c1c1d1d2d3e3e3f3f3g3g4h5h5i5i5i5j5j6k7k7k7l7l7a7a7b0b1b1c1c1d1d1e2e3f3f3g3g3h3h4h5i5i5j5j5j5k5k6l7l7l7a7a7b7b0c1c1d1d1e1e1f2f3g3g3g3h3h3i3i4i5j5j5k5k5l5l5l6a7a7b7b7c7c7d0d1e1e1f1f1f2g3g3h3h3i3i3i3j4j5k5k5k5l5l5a5a6b7b7b7c7c7d7d0e1e1f1f1g1g1h2h3i3i3i3j3j3k3k4k5l5l5a5a5a5b5b6c7c7d7d7e7e0f1f1g1g1h1h1h2i3i3j3j3j3k3k3l3l4l5a5a5b5b5c5c6d7d7d7e7e7f7f0g1g1h1h1i1i1j2j3j3k3k3l3l3l3a4a5b5b5b5c5c5d6d7e7e7f7f7g7g0h1h1i1i1i1j1j1k2k3k3l3l3a3a3a3b4b5c5c5d5d5e5e6e7f7g7g7g7h7h0i1i1j1j1j1k1k1l2l3l3a3a3b3b3c4c5d5d5e5e5f5f6f7g7g7h7h7i7i0j1j1j1k1k';
+const PHASES=[["🌑", "Nouvelle lune", "Temps de semence et de repos. Ce soir, écris en une phrase ce que tu veux voir grandir ce mois-ci."], ["🌒", "Premier croissant", "L'élan revient doucement. Fais aujourd'hui un premier petit pas vers ton intention, même de cinq minutes."], ["🌓", "Premier quartier", "L'énergie appelle l'action. Choisis une tâche que tu repousses et avance-la avant midi."], ["🌔", "Lune gibbeuse croissante", "Tout mûrit. Ajuste plutôt que d'ajouter : relis ton intention et garde l'essentiel."], ["🌕", "Pleine lune", "Lumière et intensité, le sommeil peut être plus léger. Pose tes écrans une heure avant le coucher et note ce qui s'est éclairé."], ["🌖", "Lune gibbeuse décroissante", "Temps de récolte. Reconnais une chose accomplie ce cycle et remercie-toi, à voix haute ou par écrit."], ["🌗", "Dernier quartier", "Invitation au tri. Libère une chose aujourd'hui : un objet, un engagement, une pensée qui pèse."], ["🌘", "Dernier croissant", "La Lune se retire, ton corps aussi peut ralentir. Offre-toi vingt minutes de vrai repos, sans rien produire."]];
+const SIGNS=[["Bélier", "Énergie vive et spontanée : bouge ton corps quelques minutes dès le matin pour canaliser cet élan."], ["Taureau", "Besoin de concret et de douceur : savoure un repas lentement, sans écran."], ["Gémeaux", "L'esprit papillonne : note tes idées sur papier pour libérer ta tête, puis choisis-en une seule."], ["Cancer", "Sensibilité à fleur de peau : accorde-toi un moment cocon, une boisson chaude, du calme."], ["Lion", "Envie de rayonner : fais une chose qui te met en joie, juste pour toi."], ["Vierge", "Goût du soin et de l'ordre : range un petit espace, ton bureau ou ton sac, l'esprit suit."], ["Balance", "Besoin d'harmonie et de lien : prends des nouvelles d'une personne qui compte pour toi."], ["Scorpion", "Émotions profondes : prends cinq minutes pour écrire ce que tu ressens vraiment, sans te censurer."], ["Sagittaire", "Soif d'espace : sors marcher dehors, en laissant ton regard porter loin."], ["Capricorne", "Énergie qui structure : pose les trois priorités de ta semaine, pas une de plus."], ["Verseau", "Envie de neuf : change une petite habitude aujourd'hui, un trajet, une recette."], ["Poissons", "Intuition et rêverie : offre-toi quelques minutes de respiration lente avant de dormir."]];
+function luneOf(y,m,d){
+  const i=Math.round((Date.UTC(y,m,d)-LUNE_START)/86400000);
+  if(i<0||i*2>=LUNE_CODE.length)return null;
+  const p=+LUNE_CODE[i*2],sg='abcdefghijkl'.indexOf(LUNE_CODE[i*2+1]);
+  return {p,e:PHASES[p][0],n:PHASES[p][1],tip:PHASES[p][2],sign:SIGNS[sg][0],stip:SIGNS[sg][1]};
+}
+function luneLabel(l){return `${l.e} ${l.n} en ${l.sign}`;}
+// Conversion des anciennes notes en mots vers l'échelle 1 à 5
+const OLD_SLEEP=[1,3,4,5];            // Difficile, Moyen, Bon, Profond
+const OLD_ENERGY=[1,2,3,4,5];         // Très basse … Pleine
+const OLD_MOOD=[4,5,4,2,2,3,4];       // Sereine, Joyeuse, Créative, Fatiguée, Irritable, Sensible, Apaisée
+const WORD_SCALE={
+  5:['rayonnante','expansive','débordante','vibrante','joyeuse','enthousiaste','lumineuse','reconnaissante'],
+  4:['légère','stable','créative','ancrée','fluide','concentrée','sereine','présente','curieuse','tendre','apaisée','sauvage'],
+  3:['tranquille','douce','vacillante','résistante','nostalgique','sensible','vulnérable','distante','confuse'],
+  2:['lourde','dispersée','engourdie','tendue','fragile','en retrait','alourdie','renfermée','mélancolique','irritable','anxieuse','débordée','énervée','maussade','morose','fermée','pessimiste','triste'],
+  1:['épuisée','abattue','vidée','bloquée','sombre','découragée','éteinte','furieuse','impuissante','amère']
 };
+function wordToScale(w){if(!w)return null;w=w.trim().toLowerCase();for(const k in WORD_SCALE)if(WORD_SCALE[k].includes(w))return +k;return null;}
+const MOON_DATA={"2026-06-08":"🌗","2026-06-15":"🌑","2026-06-21":"🌓","2026-06-30":"🌕","2026-07-07":"🌗","2026-07-14":"🌑","2026-07-21":"🌓","2026-07-29":"🌕","2026-08-06":"🌗","2026-08-12":"🌑","2026-08-20":"🌓","2026-08-28":"🌕","2026-09-04":"🌗","2026-09-11":"🌑","2026-09-18":"🌓","2026-09-26":"🌕","2026-10-03":"🌗","2026-10-10":"🌑","2026-10-18":"🌓","2026-10-26":"🌕","2026-11-01":"🌗","2026-11-09":"🌑","2026-11-17":"🌓","2026-11-24":"🌕","2026-12-01":"🌗","2026-12-09":"🌑","2026-12-17":"🌓","2026-12-24":"🌕","2026-12-30":"🌗","2027-01-07":"🌑","2027-01-15":"🌓","2027-01-22":"🌕","2027-01-29":"🌗","2027-02-06":"🌑","2027-02-14":"🌓","2027-02-21":"🌕","2027-02-28":"🌗","2027-03-08":"🌑","2027-03-15":"🌓","2027-03-22":"🌕","2027-03-30":"🌗","2027-04-07":"🌑","2027-04-14":"🌓","2027-04-21":"🌕","2027-04-28":"🌗","2027-05-06":"🌑","2027-05-13":"🌓","2027-05-20":"🌕","2027-05-28":"🌗","2027-06-04":"🌑","2027-06-11":"🌓","2027-06-19":"🌕","2027-06-27":"🌗","2027-07-04":"🌑","2027-07-10":"🌓","2027-07-18":"🌕","2027-07-26":"🌗","2027-08-02":"🌑","2027-08-09":"🌓","2027-08-17":"🌕","2027-08-25":"🌗","2027-08-31":"🌑","2027-09-07":"🌓","2027-09-16":"🌕","2027-09-23":"🌗","2027-09-30":"🌑","2027-10-07":"🌓","2027-10-15":"🌕","2027-10-22":"🌗","2027-10-29":"🌑","2027-11-06":"🌓","2027-11-14":"🌕","2027-11-21":"🌗","2027-11-28":"🌑","2027-12-06":"🌓","2027-12-13":"🌕","2027-12-20":"🌗","2027-12-27":"🌑"}; // calculé avec astronomy-engine, heure de Paris, juin 2026 → déc. 2027
 const MOON_NAMES={'🌑':'Nouvelle lune','🌓':'Premier quartier','🌕':'Pleine lune','🌗':'Dernier quartier'};
 const SEASON_TIPS={
-  'Été':{rythme:"Profite de l'énergie ambiante, mais garde une vraie pause au cœur de la journée.",sommeil:"Les jours longs retardent l'endormissement — obscurcis bien la chambre pour préserver ta mélatonine.",alimentation:"Repas frais et hydratants : fruits, légumes crus, eau régulière toute la journée."},
-  'Automne':{rythme:"Ralentis progressivement, c'est une transition, pas un frein.",sommeil:"La lumière baisse — avance en douceur l'heure du coucher.",alimentation:"Réintroduis des aliments chauds et réconfortants : soupes, légumes racines."},
-  'Hiver':{rythme:"Saison de repli : moins d'action, plus d'intériorité, et c'est très bien ainsi.",sommeil:"Le corps réclame plus de sommeil — accorde-toi des nuits plus longues sans culpabilité.",alimentation:"Privilégie des plats nourrissants et chauds, riches en bons gras."}
-};
-const MOON_TIPS={
-  '🌑':{n:'Nouvelle lune',rythme:"Ralentis, pose une intention plutôt que de foncer dans l'action.",sommeil:"Couche-toi plus tôt si tu peux, le corps demande plus de repos ces jours-ci.",alimentation:"Repas légers et chauds, faciles à digérer."},
-  '🌓':{n:'Premier quartier',rythme:"Bon moment pour lancer une habitude ou avancer sur un projet en cours.",sommeil:"L'énergie remonte, un sommeil un peu plus léger que d'habitude est normal.",alimentation:"Ajoute des aliments énergisants : céréales complètes, fruits frais, protéines légères."},
-  '🌕':{n:'Pleine lune',rythme:"Canalise le trop-plein d'énergie dans une activité expressive : écriture, mouvement, création.",sommeil:"Le sommeil peut être plus agité — évite les écrans tard le soir.",alimentation:"Hydrate-toi bien, limite le sucre et la caféine qui amplifient l'agitation."},
-  '🌗':{n:'Dernier quartier',rythme:"Fais le tri : lâche ce qui n'a plus sa place avant le prochain cycle.",sommeil:"Autorise-toi des nuits plus longues, le corps évacue la fatigue accumulée.",alimentation:"Allège l'assiette, privilégie légumes et tisanes drainantes."}
+ "Printemps": {
+  "rythme": "L'énergie remonte : commence un projet par un tout petit pas.",
+  "sommeil": "La lumière revient tôt : ouvre tes volets dès le réveil pour caler ton horloge intérieure.",
+  "alimentation": "Allège l'assiette : jeunes pousses, légumes verts, herbes fraîches."
+ },
+ "Été": {
+  "rythme": "Profite de l'élan, mais garde une vraie pause au cœur de la journée.",
+  "sommeil": "Les soirées longues retardent l'endormissement : obscurcis bien ta chambre.",
+  "alimentation": "Mise sur le frais et l'hydratant : fruits, crudités, de l'eau tout au long de la journée."
+ },
+ "Automne": {
+  "rythme": "Ralentis progressivement : c'est une transition, pas un frein.",
+  "sommeil": "La lumière baisse : avance un peu l'heure de ton coucher.",
+  "alimentation": "Réintroduis le chaud et le réconfortant : soupes, légumes racines, courges."
+ },
+ "Hiver": {
+  "rythme": "Saison du repli : fais moins, mais en conscience.",
+  "sommeil": "Ton corps réclame plus de sommeil : accorde-toi des nuits longues, sans culpabilité.",
+  "alimentation": "Privilégie les plats chauds et nourrissants : mijotés, légumineuses, bouillons."
+ }
 };
 const CYCLE_TIPS={
   0:{n:'Menstruation',rythme:"Réduis les sollicitations, ce n'est pas le moment de forcer.",sommeil:"Autorise-toi à dormir plus si le besoin s'en fait sentir.",alimentation:"Fer et magnésium sont tes alliés : légumineuses, chocolat noir, légumes verts."},
@@ -377,35 +404,37 @@ const CYCLE_TIPS={
   3:{n:'Phase lutéale',rythme:"Ralentis progressivement, priorise et élimine le superflu de ton agenda.",sommeil:"Le sommeil peut se fragiliser en fin de phase — limite les écrans le soir.",alimentation:"Privilégie magnésium et glucides complexes pour stabiliser l'humeur."}
 };
 function buildConseil(y,m,d,entry,skipTitle){
-  const moon=getMoon(y,m,d);
-  const season=SEASONS[m]?.n;
+  const lune=luneOf(y,m,d);
+  const season=seasonOf(y,m,d).n;
   const parts=[];
-  if(moon&&MOON_TIPS[moon]){
-    const t=MOON_TIPS[moon];
-    parts.push(`<div class="conseil-item"><b>${t.n} —</b> ${t.rythme}</div>`);
-    parts.push(`<div class="conseil-item"><b>Sommeil —</b> ${t.sommeil}</div>`);
-    parts.push(`<div class="conseil-item"><b>Alimentation —</b> ${t.alimentation}</div>`);
-  }else if(season&&SEASON_TIPS[season]){
+  if(lune){
+    parts.push(`<div class="conseil-sub">${luneLabel(lune)}</div>`);
+    parts.push(`<div class="conseil-item">${lune.tip}</div>`);
+    parts.push(`<div class="conseil-item">${lune.stip}</div>`);
+  }
+  if(season&&SEASON_TIPS[season]){
     const t=SEASON_TIPS[season];
-    parts.push(`<div class="conseil-item"><b>${season} —</b> ${t.rythme}</div>`);
+    parts.push(`<div class="conseil-sub">${SEASON_EMOJI[season]} ${season}</div>`);
+    parts.push(`<div class="conseil-item"><b>Rythme —</b> ${t.rythme}</div>`);
     parts.push(`<div class="conseil-item"><b>Sommeil —</b> ${t.sommeil}</div>`);
     parts.push(`<div class="conseil-item"><b>Alimentation —</b> ${t.alimentation}</div>`);
   }
-  if(entry&&entry.cycle!==undefined&&CYCLE_TIPS[entry.cycle]){
-    const t=CYCLE_TIPS[entry.cycle];
-    parts.push(`<div class="conseil-item"><b>${t.n} —</b> ${t.rythme}</div>`);
+  const ph=cyclePhase(y,m,d,entry);
+  if(ph!==null&&CYCLE_TIPS[ph]){
+    const t=CYCLE_TIPS[ph];
+    parts.push(`<div class="conseil-sub">🌸 Ton cycle</div>`);
+    parts.push(`<div class="conseil-item"><b>${t.n}${entry&&entry.regles?'':' (estimée)'} —</b> ${t.rythme}</div>`);
   }
-  if(entry&&entry.sleep===0){
-    parts.push(`<div class="conseil-item">Tu as noté un sommeil difficile — sois particulièrement douce avec toi aujourd'hui.</div>`);
-  }else if(entry&&entry.energy!==undefined&&entry.energy<=1){
+  if(entry&&entry.sleep5&&entry.sleep5<=2){
+    parts.push(`<div class="conseil-item">Ta nuit a été difficile — sois particulièrement douce avec toi aujourd'hui.</div>`);
+  }else if(entry&&entry.energy5&&entry.energy5<=2){
     parts.push(`<div class="conseil-item">Ton énergie est basse aujourd'hui — écoute ce besoin de ralentir.</div>`);
-  }else if(entry&&entry.mood!==undefined&&[3,4,5].includes(entry.mood)){
+  }else if(entry&&entry.mood5&&entry.mood5<=2){
     parts.push(`<div class="conseil-item">Ton humeur du jour appelle à plus de douceur envers toi-même.</div>`);
   }
   if(!parts.length)return'';
   return (skipTitle?'':`<div class="conseil-title">✦ Conseil du jour</div>`)+parts.join('');
 }
-const CYCLE_COLORS=['#E8D5F0','#C0DD97','#FAC775','#F5C4B3','#D3D1C7'];
 const START_DAY=21; // jours inactifs avant le 22 juin
 
 // Splash screen : supprime après 2.5s
@@ -414,35 +443,77 @@ setTimeout(()=>{const s=document.getElementById('splash');if(s)s.remove();},2600
 let data={};
 try{data=JSON.parse(localStorage.getItem('arvv2')||'{}');}catch(e){}
 const saveData=()=>{try{localStorage.setItem('arvv2',JSON.stringify(data));}catch(e){}};
+// Conversion unique des anciennes notes (une copie de sécurité est gardée)
+function migrate(){
+  let changed=false;
+  for(const k in data){
+    const e=data[k];
+    if(k.startsWith('intention_')||!e||typeof e!=='object'||e.v===3)continue;
+    if(e.sleep!==undefined&&!e.sleep5)e.sleep5=OLD_SLEEP[e.sleep];
+    if(!e.energy5){const w=e.energy!==undefined?OLD_ENERGY[e.energy]:wordToScale(e.energyWord);if(w)e.energy5=w;}
+    if(!e.mood5){const w=wordToScale(e.moodWord)||(e.mood!==undefined?OLD_MOOD[e.mood]:null);if(w)e.mood5=w;}
+    if(e.cycle===0)e.regles=true;
+    delete e.sleep;delete e.energy;delete e.mood;delete e.cycle;
+    e.v=3;changed=true;
+  }
+  return changed;
+}
+try{if(!localStorage.getItem('arvv2_avant_v3')&&localStorage.getItem('arvv2'))localStorage.setItem('arvv2_avant_v3',localStorage.getItem('arvv2'));}catch(err){}
+if(migrate())saveData();
+// ---------- Règles : historique et prévision ----------
+function dayIndex(k){const [y,m,d]=k.split('-').map(Number);return Math.round(Date.UTC(y,m-1,d)/86400000);}
+function keyFromIndex(i){const t=new Date(i*86400000);return dkey(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate());}
+function cycleStats(){
+  const days=Object.keys(data).filter(k=>/^\d{4}-\d\d-\d\d$/.test(k)&&data[k].regles).map(dayIndex).sort((a,b)=>a-b);
+  if(!days.length)return null;
+  const set=new Set(days);const starts=days.filter(i=>!set.has(i-1)&&!set.has(i-2));
+  const lens=starts.map(st=>{let n=0;while(set.has(st+n)||set.has(st+n+1))n++;return Math.max(n,1);});
+  const gaps=[];for(let i=1;i<starts.length;i++){const g=starts[i]-starts[i-1];if(g>=21&&g<=45)gaps.push(g);}
+  const recent=gaps.slice(-6);
+  const cycle=recent.length?Math.round(recent.reduce((a,b)=>a+b,0)/recent.length):28;
+  const rl=lens.slice(-6);
+  const plen=Math.min(8,Math.round(rl.reduce((a,b)=>a+b,0)/rl.length));
+  return {starts,cycle,plen,last:starts[starts.length-1],set};
+}
+let STATS=null;
+function todayIndex(){return dayIndex(dkey(today.getFullYear(),today.getMonth(),today.getDate()));}
+function predictedStarts(){if(!STATS)return[];const out=[];for(let n=1;n<=14;n++)out.push(STATS.last+n*STATS.cycle);return out;}
+function isPredicted(y,m,d){
+  if(!STATS)return false;const i=dayIndex(dkey(y,m,d));
+  if(i<todayIndex()||STATS.set.has(i))return false;
+  return predictedStarts().some(st=>i>=st&&i<st+STATS.plen);
+}
+// Phase estimée du cycle (0 règles, 1 folliculaire, 2 ovulation, 3 lutéale)
+function cyclePhase(y,m,d,entry){
+  if(entry&&entry.regles)return 0;
+  if(!STATS)return null;
+  const i=dayIndex(dkey(y,m,d));
+  const st=[...STATS.starts,...predictedStarts()].filter(x=>x<=i).pop();
+  if(st===undefined)return null;
+  const j=i-st,C=STATS.cycle,ov=C-14;
+  if(j>=C+7)return null;
+  if(j<STATS.plen)return 0;
+  if(Math.abs(j-ov)<=1)return 2;
+  return j<ov?1:3;
+}
 
 const today=new Date();
-let curM=5,curY=2026; // Juin = mois 5
-let editKey=null;
+STATS=cycleStats();
+let curM=today.getMonth(),curY=today.getFullYear(); // mois en cours
+let editKey=null,editPicks=null;
 let bilanWeekOffset=0;
 
 function dkey(y,m,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;}
 function getMoon(y,m,d){return MOON_DATA[dkey(y,m,d)]||null;}
-function isInactive(m,d){return m===5&&d<=START_DAY;}
+function isInactive(m,d){return curY===2026&&m===5&&d<=START_DAY;}
 
-document.querySelectorAll('.tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    const id=tab.dataset.tab;
-    ['guide','cal','bilans','conseils'].forEach(t=>{
-      document.getElementById('tab-'+t).style.display=(id===t)?'block':'none';
-    });
-    if(id==='bilans') renderBilans();
-    if(id==='conseils') renderConseilTab();
-  });
-});
 
 function renderConseilTab(){
   const y=today.getFullYear(),m=today.getMonth(),d=today.getDate();
-  const moon=getMoon(y,m,d);
-  document.getElementById('conseil-tab-moon').textContent=moon||'🌙';
+  const lune=luneOf(y,m,d);
+  document.getElementById('conseil-tab-moon').textContent=lune?lune.e:'🌙';
   const dn=DAYS_SHORT[(today.getDay()+6)%7];
-  document.getElementById('conseil-tab-date').textContent=`${dn} ${d} ${MONTHS[m]}`+(moon?` · ${MOON_NAMES[moon]}`:(SEASONS[m]?` · ${SEASONS[m].n}`:''));
+  document.getElementById('conseil-tab-date').textContent=`${dn} ${d} ${MONTHS[m]} · ${seasonOf(y,m,d).n}`;
   const entry=data[dkey(y,m,d)]||{};
   const body=buildConseil(y,m,d,entry,true);
   document.getElementById('conseil-tab-body').innerHTML=body||`<div class="conseil-item">Reviens noter ta journée dans l'Agenda pour affiner ton conseil du jour.</div>`;
@@ -450,11 +521,12 @@ function renderConseilTab(){
 
 function renderCal(){
   const m=curM,y=curY;
-  const s=SEASONS[m];
+  const s=seasonOf(y,m,15);
   document.getElementById('month-name').textContent=MONTHS[m]+' '+y;
   document.getElementById('season-tag').textContent=s?s.e+' '+s.n:'';
-  document.getElementById('prev-btn').disabled=(m===5&&y===2026);
-  document.getElementById('next-btn').disabled=(m===11&&y===2026);
+  const ym=`${y}-${String(m+1).padStart(2,'0')}`;
+  const pm=predictedStarts().map(keyFromIndex).filter(k=>k.startsWith(ym)&&dayIndex(k)>=todayIndex());
+  document.getElementById('regles-info').textContent=pm.length?`🩸 Règles prévues autour du ${pm.map(k=>+k.slice(8)).join(' et du ')}`:'';
   const wk=getWeekKey(y,m);
   document.getElementById('intention-input').value=data['intention_'+wk]||'';
   const gh=document.getElementById('day-headers');
@@ -476,18 +548,15 @@ function renderCal(){
     let cls='day-cell';
     if(inactive) cls+=' inactive';
     else if(isToday) cls+=' today';
-    if(!inactive&&entry.star) cls+=' has-star';
     cell.className=cls;
     const moonH=moon?`<div class="day-moon">${moon}</div>`:`<div class="day-moon"></div>`;
     let energyH='<div class="day-energy">';
-    const eL=(!inactive&&entry.energy!==undefined)?entry.energy:-1;
+    const eL=(!inactive&&entry.energy5)?entry.energy5-1:-1;
     for(let e=0;e<5;e++)energyH+=`<div class="edot${e<=eL?' on':''}"></div>`;
     energyH+='</div>';
-    const cc=(!inactive&&entry.cycle!==undefined)?CYCLE_COLORS[entry.cycle]:'var(--cream-darker)';
-    const cycleH=`<div class="day-cycle" style="background:${cc};"></div>`;
-    const starH=(!inactive&&entry.star)?`<div class="day-star">⭐</div>`:`<div class="day-star"></div>`;
-    const phareH=(!inactive&&entry.phare)?`<div class="day-phare ${entry.phare}"></div>`:`<div class="day-phare" style="opacity:0;"></div>`;
-    cell.innerHTML=`<div class="day-num">${d}</div>${moonH}${energyH}${cycleH}${starH}${phareH}`;
+    const cycleCls=(!inactive&&entry.regles)?' regles':(!inactive&&isPredicted(y,m,d)?' prevues':'');
+    const cycleH=`<div class="day-cycle${cycleCls}"></div>`;
+    cell.innerHTML=`<div class="day-num">${d}</div>${moonH}${energyH}${cycleH}`;
     if(!inactive) cell.addEventListener('click',()=>openModal(y,m,d));
     grid.appendChild(cell);
   }
@@ -498,21 +567,13 @@ function getWeekKey(y,m){
   return `${y}-W${Math.ceil((d.getTime()-(new Date(y,0,1).getTime()))/(7*86400000))}`;
 }
 
-document.getElementById('prev-btn').addEventListener('click',()=>{if(curM===5&&curY===2026)return;curM--;if(curM<0){curM=11;curY--;}renderCal();});
-document.getElementById('next-btn').addEventListener('click',()=>{if(curM===11&&curY===2026)return;curM++;if(curM>11){curM=0;curY++;}renderCal();});
+document.getElementById('prev-btn').addEventListener('click',()=>{curM--;if(curM<0){curM=11;curY--;}renderCal();});
+document.getElementById('next-btn').addEventListener('click',()=>{curM++;if(curM>11){curM=0;curY++;}renderCal();});
 document.getElementById('intention-input').addEventListener('blur',()=>{
   const wk=getWeekKey(curY,curM);
   const text=document.getElementById('intention-input').value;
   data['intention_'+wk]=text;
   saveData();
-  // Sync intention
-  if(isOnline){
-    fetch(`${API_URL}/api/intentions`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({weekKey:wk,text})
-    }).catch(e=>console.error('Intention sync failed:',e));
-  }
 });
 
 function openModal(y,m,d){
@@ -521,40 +582,19 @@ function openModal(y,m,d){
   const moon=getMoon(y,m,d);
   const dn=DAYS_SHORT[(new Date(y,m,d).getDay()+6)%7];
   document.getElementById('modal-date').textContent=`${dn} ${d} ${MONTHS[m]}`;
-  document.getElementById('modal-moon-info').textContent=moon?`${moon} ${MOON_NAMES[moon]} · ${SEASONS[m]?.n||''}`:(SEASONS[m]?.n||'');
-  const refreshConseil=()=>{
-    const cI=[...document.getElementById('cycle-btns').querySelectorAll('.cycle-btn')].findIndex(b=>b.classList.contains('active'));
-    const eI=[...document.getElementById('energy-btns').querySelectorAll('.sel-btn')].findIndex(b=>b.classList.contains('active'));
-    const mI=[...document.getElementById('mood-btns').querySelectorAll('.sel-btn')].findIndex(b=>b.classList.contains('sage-active'));
-    const sI=[...document.getElementById('sleep-btns').querySelectorAll('.sel-btn')].findIndex(b=>b.classList.contains('active'));
-    const liveEntry={};
-    if(cI>=0)liveEntry.cycle=cI;
-    if(eI>=0)liveEntry.energy=eI;
-    if(mI>=0)liveEntry.mood=mI;
-    if(sI>=0)liveEntry.sleep=sI;
-    document.getElementById('modal-conseil').innerHTML=buildConseil(y,m,d,liveEntry);
-  };
-  const er=document.getElementById('energy-btns');er.innerHTML='';
-  ENERGY_OPTS.forEach((e,i)=>{const b=document.createElement('button');b.className='sel-btn'+(entry.energy===i?' active':'');b.textContent=e;b.addEventListener('click',()=>{er.querySelectorAll('.sel-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');refreshConseil();});er.appendChild(b);});
-  document.getElementById('energy-word').value=entry.energyWord||'';
-  const es=document.getElementById('energy-suggest');es.innerHTML='';
-  [...ENERGY_WORDS].sort(()=>Math.random()-0.5).slice(0,8).forEach(w=>{const p=document.createElement('span');p.className='word-sug-pill';p.textContent=w;p.addEventListener('click',()=>{document.getElementById('energy-word').value=w;});es.appendChild(p);});
-  const mr=document.getElementById('mood-btns');mr.innerHTML='';
-  MOOD_OPTS.forEach((mood,i)=>{const b=document.createElement('button');b.className='sel-btn'+(entry.mood===i?' sage-active':'');b.textContent=mood;b.addEventListener('click',()=>{mr.querySelectorAll('.sel-btn').forEach(x=>x.classList.remove('sage-active'));b.classList.add('sage-active');refreshConseil();});mr.appendChild(b);});
-  document.getElementById('mood-word').value=entry.moodWord||'';
-  const ms=document.getElementById('mood-suggest');ms.innerHTML='';
-  [...MOOD_WORDS].sort(()=>Math.random()-0.5).slice(0,8).forEach(w=>{const p=document.createElement('span');p.className='word-sug-pill';p.textContent=w;p.addEventListener('click',()=>{document.getElementById('mood-word').value=w;});ms.appendChild(p);});
-  const pr=document.getElementById('phare-btns');pr.innerHTML='';
-  PHARE_OPTS.forEach(opt=>{const b=document.createElement('button');b.className='phare-btn'+(entry.phare===opt.k?` active-${opt.k}`:'');b.textContent=opt.l;b.addEventListener('click',()=>{pr.querySelectorAll('.phare-btn').forEach(x=>{x.className='phare-btn';});b.className=`phare-btn active-${opt.k}`;});pr.appendChild(b);});
-  const cr=document.getElementById('cycle-btns');cr.innerHTML='';
-  CYCLE_OPTS.forEach((c,i)=>{const b=document.createElement('button');b.className='cycle-btn'+(entry.cycle===i?' active':'');b.textContent=c;b.addEventListener('click',()=>{cr.querySelectorAll('.cycle-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');refreshConseil();});cr.appendChild(b);});
-  const sr=document.getElementById('sleep-btns');sr.innerHTML='';
-  SLEEP_OPTS.forEach((s,i)=>{const b=document.createElement('button');b.className='sel-btn'+(entry.sleep===i?' active':'');b.textContent=s;b.addEventListener('click',()=>{sr.querySelectorAll('.sel-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');refreshConseil();});sr.appendChild(b);});
-  const starRow=document.getElementById('star-row');
-  let starActive=!!entry.star;
-  const updateStar=()=>{starRow.querySelector('.star-icon').textContent=starActive?'⭐':'☆';starRow.querySelector('.star-text').textContent=starActive?'Journée exceptionnelle !':'Marquer cette journée comme exceptionnelle';};
-  updateStar();
-  starRow.onclick=()=>{starActive=!starActive;updateStar();};
+  const lune=luneOf(y,m,d);document.getElementById('modal-moon-info').textContent=(lune?luneLabel(lune)+' · ':'')+seasonOf(y,m,d).n;
+  const picks={sleep5:entry.sleep5,energy5:entry.energy5,mood5:entry.mood5,regles:entry.v?!!entry.regles:undefined};
+  const refreshConseil=()=>{document.getElementById('modal-conseil').innerHTML=buildConseil(y,m,d,picks);};
+  [['sleep-btns','sleep5'],['energy-btns','energy5'],['mood-btns','mood5']].forEach(([id,f])=>{
+    const row=document.getElementById(id);row.innerHTML='';
+    for(let v=1;v<=5;v++){const b=document.createElement('button');b.className='scale-btn'+(picks[f]===v?' active':'');b.textContent=v;
+      b.addEventListener('click',()=>{if(picks[f]===v){picks[f]=undefined;b.classList.remove('active');}else{picks[f]=v;row.querySelectorAll('.scale-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');}refreshConseil();});
+      row.appendChild(b);}
+  });
+  const rr=document.getElementById('regles-btns');rr.innerHTML='';
+  [['Oui',true],['Non',false]].forEach(([l,v])=>{const b=document.createElement('button');b.className='cycle-btn'+(picks.regles===v?' active':'');b.textContent=l;
+    b.addEventListener('click',()=>{picks.regles=v;rr.querySelectorAll('.cycle-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');refreshConseil();});rr.appendChild(b);});
+  editPicks=picks;
   document.getElementById('todo-area').value=entry.todo||'';
   document.getElementById('note-area').value=entry.note||'';
   refreshConseil();
@@ -564,29 +604,19 @@ function openModal(y,m,d){
 document.getElementById('modal-cancel').addEventListener('click',()=>{document.getElementById('modal-bg').classList.remove('open');});
 document.getElementById('modal-bg').addEventListener('click',(e)=>{if(e.target===document.getElementById('modal-bg'))document.getElementById('modal-bg').classList.remove('open');});
 document.getElementById('modal-save').addEventListener('click',()=>{
-  const er=document.getElementById('energy-btns'),mr=document.getElementById('mood-btns'),pr=document.getElementById('phare-btns'),cr=document.getElementById('cycle-btns'),sr=document.getElementById('sleep-btns');
-  const eI=[...er.querySelectorAll('.sel-btn')].findIndex(b=>b.classList.contains('active'));
-  const mI=[...mr.querySelectorAll('.sel-btn')].findIndex(b=>b.classList.contains('sage-active'));
-  const cI=[...cr.querySelectorAll('.cycle-btn')].findIndex(b=>b.classList.contains('active'));
-  const sI=[...sr.querySelectorAll('.sel-btn')].findIndex(b=>b.classList.contains('active'));
-  const phareActive=pr.querySelector('.phare-btn[class*="active-"]');
-  const phareKey=phareActive?PHARE_OPTS.find(o=>phareActive.classList.contains('active-'+o.k))?.k:null;
-  const starActive=document.getElementById('star-row').querySelector('.star-icon').textContent==='⭐';
-  const entry={};
-  if(eI>=0)entry.energy=eI;
-  const ew=document.getElementById('energy-word').value.trim();if(ew)entry.energyWord=ew;
-  if(mI>=0)entry.mood=mI;
-  const mw=document.getElementById('mood-word').value.trim();if(mw)entry.moodWord=mw;
-  if(phareKey)entry.phare=phareKey;
-  if(cI>=0)entry.cycle=cI;
-  if(sI>=0)entry.sleep=sI;
-  if(starActive)entry.star=true;
+  const old=data[editKey]||{};
+  const entry={v:3};
+  ['sleep5','energy5','mood5'].forEach(f=>{if(editPicks[f])entry[f]=editPicks[f];});
+  if(editPicks.regles)entry.regles=true;
+  if(old.energyWord)entry.energyWord=old.energyWord;
+  if(old.moodWord)entry.moodWord=old.moodWord;
+  if(old.phare)entry.phare=old.phare;
+  if(old.star)entry.star=true;
   const todo=document.getElementById('todo-area').value.trim();if(todo)entry.todo=todo;
   const note=document.getElementById('note-area').value.trim();if(note)entry.note=note;
-  if(Object.keys(entry).length)data[editKey]=entry;
+  if(Object.keys(entry).length>1)data[editKey]=entry;else delete data[editKey];
   saveData();
-  // Sync to server
-  if(Object.keys(entry).length)syncEntry(editKey,entry);
+  STATS=cycleStats();
   document.getElementById('modal-bg').classList.remove('open');
   renderCal();
   if(document.getElementById('tab-bilans').style.display!=='none') renderBilans();
@@ -594,7 +624,7 @@ document.getElementById('modal-save').addEventListener('click',()=>{
 
 let charts={};
 function getWeekDays(offset){
-  const base=new Date(curY,curM,1);const day=base.getDay();const mon=new Date(base);
+  const base=new Date(today.getFullYear(),today.getMonth(),today.getDate());const day=base.getDay();const mon=new Date(base);
   mon.setDate(base.getDate()-(day===0?6:day-1)+(offset*7));
   const days=[];for(let i=0;i<7;i++){const d=new Date(mon);d.setDate(mon.getDate()+i);days.push(d);}
   return days;
@@ -604,39 +634,33 @@ function renderBilans(){
   const first=days[0],last=days[6];
   const fmt=d=>`${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}`;
   document.getElementById('bilan-week-label').textContent=`${fmt(first)} — ${fmt(last)}`;
-  document.getElementById('bilan-prev').disabled=(bilanWeekOffset<=0);
-  document.getElementById('bilan-next').disabled=(bilanWeekOffset>=8);
+  document.getElementById('bilan-next').disabled=(bilanWeekOffset>=0);
   const labels=days.map(d=>DAYS_SHORT[(d.getDay()+6)%7]);
-  const energyD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.energy!==undefined?data[k].energy+1:null;});
-  const moodD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.mood!==undefined?data[k].mood+1:null;});
-  const sleepD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.sleep!==undefined?data[k].sleep+1:null;});
-  const phareMap={matin:1,midi:2,aprem:3,soir:4};
-  const phareD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.phare?phareMap[data[k].phare]:null;});
+  const energyD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.energy5||null;});
+  const moodD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.mood5||null;});
+  const sleepD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.sleep5||null;});
   const filled=days.filter(d=>data[dkey(d.getFullYear(),d.getMonth(),d.getDate())]).length;
-  const stars=days.filter(d=>data[dkey(d.getFullYear(),d.getMonth(),d.getDate())]?.star).length;
-  document.getElementById('bilan-summary').innerHTML=`<div class="summary-card"><div class="summary-num">${filled}</div><div class="summary-label">Jours tracés cette semaine</div></div><div class="summary-card"><div class="summary-num">${stars}</div><div class="summary-label">Journées exceptionnelles</div></div>`;
+  const regl=days.filter(d=>data[dkey(d.getFullYear(),d.getMonth(),d.getDate())]?.regles).length;
+  document.getElementById('bilan-summary').innerHTML=`<div class="summary-card"><div class="summary-num">${filled}</div><div class="summary-label">Jours tracés cette semaine</div></div><div class="summary-card"><div class="summary-num">${regl}</div><div class="summary-label">Jours de règles</div></div>`;
   const makeChart=(id,dataset,color,labels,max)=>{
     if(charts[id])charts[id].destroy();
     const ctx=document.getElementById(id).getContext('2d');
     charts[id]=new Chart(ctx,{type:'line',data:{labels,datasets:[{data:dataset,borderColor:color,backgroundColor:color+'22',tension:0.4,fill:true,pointBackgroundColor:color,pointRadius:dataset.map(v=>v?4:0),spanGaps:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:0,max:max||5,ticks:{stepSize:1,font:{size:9}},grid:{color:'rgba(0,0,0,0.05)'}},x:{ticks:{font:{size:9}},grid:{display:false}}}}});
   };
   const moonMap={'🌑':1,'🌓':2,'🌕':3,'🌗':4};
-  const cycleD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.cycle!==undefined&&data[k].cycle<4?data[k].cycle+1:null;});
+  const cycleD=days.map(d=>{const k=dkey(d.getFullYear(),d.getMonth(),d.getDate());return data[k]?.regles?1:null;});
   const moonD=days.map(d=>{const moon=getMoon(d.getFullYear(),d.getMonth(),d.getDate());return moon?moonMap[moon]:null;});
   makeChart('chart-energy',energyD,'#8FAF8B',labels,5);
-  makeChart('chart-mood',moodD,'#2D6E7E',labels,7);
-  makeChart('chart-sleep',sleepD,'#7F77DD',labels,4);
-  makeChart('chart-phare',phareD,'#FAC775',labels,4);
+  makeChart('chart-mood',moodD,'#2D6E7E',labels,5);
+  makeChart('chart-sleep',sleepD,'#7F77DD',labels,5);
   // Graphique cycle menstruel — barres colorées par phase
   if(charts['chart-cycle'])charts['chart-cycle'].destroy();
   {const ctx=document.getElementById('chart-cycle').getContext('2d');
-  const phaseColors=['#E8D5F0','#C0DD97','#FAC775','#F5C4B3','#D3D1C7'];
-  const barColors=cycleD.map(v=>v!==null?phaseColors[v-1]||'#D3D1C7':'rgba(0,0,0,0)');
-  charts['chart-cycle']=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data:cycleD,backgroundColor:barColors,borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:0,max:5,ticks:{stepSize:1,font:{size:9},callback:(v)=>['','🩸','🌱','✨','🍂',''][v]||''},grid:{color:'rgba(0,0,0,0.05)'}},x:{ticks:{font:{size:9}},grid:{display:false}}}}});}
+  charts['chart-cycle']=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data:cycleD,backgroundColor:'#D98BA8',borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{display:false,min:0,max:1},x:{ticks:{font:{size:9}},grid:{display:false}}}}});}
   makeChart('chart-moon',moonD,'#7A96A8',labels,4);
 }
-document.getElementById('bilan-prev').addEventListener('click',()=>{if(bilanWeekOffset>0){bilanWeekOffset--;renderBilans();}});
-document.getElementById('bilan-next').addEventListener('click',()=>{if(bilanWeekOffset<8){bilanWeekOffset++;renderBilans();}});
+document.getElementById('bilan-prev').addEventListener('click',()=>{bilanWeekOffset--;renderBilans();});
+document.getElementById('bilan-next').addEventListener('click',()=>{if(bilanWeekOffset<0){bilanWeekOffset++;renderBilans();}});
 
 // Sync & Backup functions
 function updateSyncStatus(){
@@ -685,7 +709,7 @@ document.getElementById('import-btn').addEventListener('click',()=>{
       if(backup.data){
         const oldCount=Object.keys(data).length;
         Object.assign(data,backup.data);
-        saveData();
+        migrate();saveData();STATS=cycleStats();
         localStorage.setItem('arvv2_lastSync',Date.now().toString());
         updateSyncStatus();
         const newCount=Object.keys(data).length-oldCount;
@@ -706,155 +730,7 @@ setInterval(()=>{
   localStorage.setItem('arvv2_backup_latest',JSON.stringify(backup));
 },3600000);
 
-// ============ SYNC & OFFLINE SUPPORT ============
-
-const API_URL=window.location.hostname==='localhost'||window.location.hostname.startsWith('192.168')?`http://${window.location.host}`:window.location.origin;
-let ws=null;
-let isOnline=navigator.onLine;
-let syncQueue=[];
-
-function loadSyncQueue(){
-  try{
-    syncQueue=JSON.parse(localStorage.getItem('arvv2_syncQueue')||'[]');
-  }catch(e){
-    syncQueue=[];
-  }
-}
-
-function saveSyncQueue(){
-  localStorage.setItem('arvv2_syncQueue',JSON.stringify(syncQueue));
-}
-
-function addToQueue(action,date,entry){
-  syncQueue.push({action,date,entry,timestamp:Date.now()});
-  saveSyncQueue();
-}
-
-function connectWebSocket(){
-  if(!isOnline)return;
-  try{
-    ws=new WebSocket('ws://localhost:3000');
-    ws.onopen=()=>{
-      console.log('✓ WebSocket connected');
-      processSyncQueue();
-    };
-    ws.onmessage=(e)=>{
-      const msg=JSON.parse(e.data);
-      if(msg.type==='entry_updated'&&msg.date){
-        const oldEntry=data[msg.date];
-        data[msg.date]=msg.data;
-        saveData();
-        if(document.getElementById('tab-cal').style.display!=='none')renderCal();
-        if(document.getElementById('tab-bilans').style.display!=='none')renderBilans();
-        console.log('✓ Synced entry:',msg.date);
-      }
-    };
-    ws.onerror=(err)=>{
-      console.error('WebSocket error:',err);
-      isOnline=false;
-    };
-    ws.onclose=()=>{
-      console.log('✗ WebSocket disconnected');
-      setTimeout(connectWebSocket,3000);
-    };
-  }catch(e){
-    console.error('WebSocket connection failed:',e);
-  }
-}
-
-function syncEntry(date,entry){
-  if(!isOnline){
-    addToQueue('save',date,entry);
-    return Promise.reject('offline');
-  }
-
-  return fetch(`${API_URL}/api/entries`,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({date,data:entry})
-  })
-  .then(r=>r.json())
-  .then(res=>{
-    if(res.success){
-      console.log('✓ Entry synced:',date);
-      return true;
-    }
-    throw new Error(res.error);
-  })
-  .catch(e=>{
-    console.error('Sync error:',e);
-    addToQueue('save',date,entry);
-    return false;
-  });
-}
-
-function processSyncQueue(){
-  if(!isOnline||!syncQueue.length)return;
-
-  const item=syncQueue[0];
-  console.log('Processing queue item:',item.action,item.date);
-
-  if(item.action==='save'){
-    fetch(`${API_URL}/api/entries`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({date:item.date,data:item.entry})
-    })
-    .then(r=>r.json())
-    .then(res=>{
-      if(res.success){
-        syncQueue.shift();
-        saveSyncQueue();
-        console.log('✓ Queued entry synced');
-        if(syncQueue.length)processSyncQueue();
-      }
-    })
-    .catch(e=>{
-      console.error('Queue sync failed:',e);
-      setTimeout(processSyncQueue,5000);
-    });
-  }
-}
-
-window.addEventListener('online',()=>{
-  isOnline=true;
-  console.log('✓ Online');
-  connectWebSocket();
-  processSyncQueue();
-});
-
-window.addEventListener('offline',()=>{
-  isOnline=false;
-  console.log('✗ Offline');
-  if(ws)ws.close();
-});
-
-loadSyncQueue();
-
-function updateSyncStatusBadge(){
-  const indicator=document.getElementById('sync-indicator');
-  const text=document.getElementById('sync-text');
-  if(isOnline){
-    indicator.style.color='#97C459';
-    text.textContent=syncQueue.length?`⏳ ${syncQueue.length} en attente`:'✓ Synced';
-  }else{
-    indicator.style.color='#F5C4B3';
-    text.textContent=`↓ Hors ligne`;
-  }
-}
-
-// Update status every 2s
-setInterval(updateSyncStatusBadge,2000);
-updateSyncStatusBadge();
-
-// Register service worker
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/sw.js')
-    .then(reg=>console.log('✓ Service Worker registered'))
-    .catch(err=>console.error('SW registration failed:',err));
-}
-
-// Sync tab management
+// Navigation entre les onglets
 document.querySelectorAll('.tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
